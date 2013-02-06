@@ -1,5 +1,5 @@
 {
-    "name": "mkraemer/react-inotify",
+    "name": "mkraemer/react-pcntl",
     "description": "PCNTL bindings for ReactPHP",
     "keywords": ["pcntl", "react"],
     "license": "MIT",
