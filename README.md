@@ -3,7 +3,7 @@
 Basic PCNTL bindings for [React PHP](https://github.com/reactphp).
 
 ##Install
-This library requires PHP5.3 and the [inotify PECL extension](http://www.php.net/manual/en/book.pcntl.php).
+This library requires PHP5.3 and the [PCNTL extension](http://www.php.net/manual/en/book.pcntl.php).
 The best way to install this library is through [composer](http://getcomposer.org):
 
 ```JSON
