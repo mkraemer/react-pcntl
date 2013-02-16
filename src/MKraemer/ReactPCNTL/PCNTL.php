@@ -27,8 +27,9 @@ class PCNTL extends EventEmitter
      */
     public function on($signo, $listener)
     {
-        pcntl_signal($signo, function ($signo) {
-            $this->emit($signo);
+        $that = $this;
+        pcntl_signal($signo, function ($signo) use ($that) {
+            $that->emit($signo);
         });
         parent::on($signo, $listener);
     }
