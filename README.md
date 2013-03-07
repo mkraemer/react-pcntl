@@ -1,5 +1,7 @@
 # React-PCNTL
 
+[![Build Status](https://secure.travis-ci.org/mkraemer/react-pcntl.png)](http://travis-ci.org/mkraemer/react-pcntl)
+
 Basic PCNTL bindings for [React PHP](https://github.com/reactphp).
 
 ##Install
@@ -39,3 +41,4 @@ echo 'Started as PID '.getmypid().PHP_EOL;
 $loop->run();
 
 ```
+
