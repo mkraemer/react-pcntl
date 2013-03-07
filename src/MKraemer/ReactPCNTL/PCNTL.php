@@ -11,8 +11,8 @@ class PCNTL extends EventEmitter
      * Constructor. Registers a periodicTimer to call
      * the installed signal handlers
      *
-     * @param React\EventLoop\LoopInterface $loop     Event Loop
-     * @param float                         $interval Interval in which new signals should be read
+     * @param \React\EventLoop\LoopInterface $loop     Event Loop
+     * @param float                          $interval Interval in which new signals should be read
      */
     public function __construct(LoopInterface $loop, $interval = 0.1)
     {
@@ -27,10 +27,7 @@ class PCNTL extends EventEmitter
      */
     public function on($signo, $listener)
     {
-        $that = $this;
-        pcntl_signal($signo, function ($signo) use ($that) {
-            $that->emit($signo);
-        });
+        pcntl_signal($signo, array($this, 'emit'));
         parent::on($signo, $listener);
     }
 
