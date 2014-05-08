@@ -1,25 +1,21 @@
 {
-	"name" : "mkraemer/react-pcntl",
-	"description" : "PCNTL bindings for ReactPHP",
-	"keywords" : [
-		"pcntl",
-		"react"
-	],
-	"license" : "MIT",
-	"authors" : [{
-			"name" : "Marius Krämer",
-			"email" : "marius@marius-kraemer.de"
-		}
-	],
-	"autoload" : {
-		"psr-0" : {
-			"MKraemer" : "src/"
-		}
-	},
-	"require" : {
-		"php" : ">=5.4.0",
-		"ext-pcntl" : "*",
-		"evenement/evenement" : "*",
-		"react/event-loop" : "dev-master"
-	}
+    "name": "mkraemer/react-pcntl",
+    "description": "PCNTL bindings for ReactPHP",
+    "keywords": ["pcntl", "react"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marius Krämer",
+            "email": "marius@marius-kraemer.de"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "MKraemer": "src/" }
+    },
+    "require": {
+        "php": ">=5.3.0",
+        "ext-pcntl": "*",
+        "evenement/evenement": "1.0.*",
+        "react/event-loop": "0.3.*"
+    }
 }
