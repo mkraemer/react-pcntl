@@ -20,6 +20,6 @@
 		"php" : ">=5.4.0",
 		"ext-pcntl" : "*",
 		"evenement/evenement" : "*",
-		"react/event-loop" : "*"
+		"react/event-loop" : "dev-master"
 	}
 }
