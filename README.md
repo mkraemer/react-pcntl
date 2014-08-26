@@ -1,17 +1,28 @@
 # React-PCNTL
 
-[![Build Status](https://secure.travis-ci.org/mkraemer/react-pcntl.png)](http://travis-ci.org/mkraemer/react-pcntl)
+[![Build Status](https://travis-ci.org/mkraemer/react-pcntl.svg?branch=1.0)](http://travis-ci.org/mkraemer/react-pcntl)
 
 Basic PCNTL bindings for [React PHP](https://github.com/reactphp).
 
 ##Install
-This library requires PHP5.3 and the [PCNTL extension](http://www.php.net/manual/en/book.pcntl.php).
+
 The best way to install this library is through [composer](http://getcomposer.org):
 
 ```JSON
 {
     "require": {
-        "mkraemer/react-pcntl": "dev-master"
+        "mkraemer/react-pcntl": "2.0.*"
+    }
+}
+```
+
+This library depends on the [PCNTL extension](http://www.php.net/manual/en/book.pcntl.php).
+**Note:** version 2 of this library requires PHP > 5.4. If you are using PHP 5.3, use the `1.0.*` version:
+
+```JSON
+{
+    "require": {
+        "mkraemer/react-pcntl": "1.0.*"
     }
 }
 ```
@@ -41,4 +52,3 @@ echo 'Started as PID '.getmypid().PHP_EOL;
 $loop->run();
 
 ```
-
