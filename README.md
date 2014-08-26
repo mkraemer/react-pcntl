@@ -11,7 +11,7 @@ The best way to install this library is through [composer](http://getcomposer.or
 ```JSON
 {
     "require": {
-        "mkraemer/react-pcntl": "dev-master"
+        "mkraemer/react-pcntl": "1.0.0"
     }
 }
 ```
