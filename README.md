@@ -5,13 +5,24 @@
 Basic PCNTL bindings for [React PHP](https://github.com/reactphp).
 
 ##Install
-This library requires PHP5.3 and the [PCNTL extension](http://www.php.net/manual/en/book.pcntl.php).
+
 The best way to install this library is through [composer](http://getcomposer.org):
 
 ```JSON
 {
     "require": {
-        "mkraemer/react-pcntl": "1.0.0"
+        "mkraemer/react-pcntl": "2.0.*"
+    }
+}
+```
+
+This library depends on the [PCNTL extension](http://www.php.net/manual/en/book.pcntl.php).
+**Note:** version 2 of this library requires PHP > 5.4. If you are using PHP 5.3, use the `1.0.*` version:
+
+```JSON
+{
+    "require": {
+        "mkraemer/react-pcntl": "1.0.*"
     }
 }
 ```

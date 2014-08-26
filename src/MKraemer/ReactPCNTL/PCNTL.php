@@ -25,7 +25,7 @@ class PCNTL extends EventEmitter
      * @param int      $signo    The signal number
      * @param callable $listener The listener
      */
-    public function on($signo, $listener)
+    public function on($signo, callable $listener)
     {
         pcntl_signal($signo, array($this, 'emit'));
         parent::on($signo, $listener);
