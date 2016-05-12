@@ -13,6 +13,7 @@
         "psr-0": { "MKraemer": "src/" }
     },
     "require": {
+        "php": ">=5.4",
         "ext-pcntl": "*",
         "evenement/evenement": "2.0.*",
         "react/event-loop": "0.4.*"
