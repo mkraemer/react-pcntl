@@ -1,6 +1,7 @@
 # React-PCNTL
 
 [![Build Status](https://secure.travis-ci.org/mkraemer/react-pcntl.png)](http://travis-ci.org/mkraemer/react-pcntl)
+[![Coverage Status](https://coveralls.io/repos/github/mkraemer/react-pcntl/badge.svg?branch=test-coverage-coveralls)](https://coveralls.io/github/mkraemer/react-pcntl?branch=test-coverage-coveralls)
 
 Basic PCNTL bindings for [React PHP](https://github.com/reactphp).
 

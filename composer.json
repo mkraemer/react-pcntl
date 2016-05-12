@@ -17,5 +17,8 @@
         "ext-pcntl": "*",
         "evenement/evenement": "2.0.*",
         "react/event-loop": "0.4.*"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "^1.0"
     }
 }
