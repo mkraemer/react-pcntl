@@ -12,13 +12,13 @@ The best way to install this library is through [composer](http://getcomposer.or
 ```JSON
 {
     "require": {
-        "mkraemer/react-pcntl": "2.0.*"
+        "mkraemer/react-pcntl": "2.1.*"
     }
 }
 ```
 
 This library depends on the [PCNTL extension](http://www.php.net/manual/en/book.pcntl.php).
-**Note:** version 2 of this library requires PHP > 5.4. If you are using PHP 5.3, use the `1.0.*` version:
+**Note:** version 2 of this library requires PHP >= 5.4. If you are using PHP 5.3, use the `1.0.*` version:
 
 ```JSON
 {
