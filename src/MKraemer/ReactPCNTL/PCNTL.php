@@ -4,19 +4,59 @@ namespace MKraemer\ReactPCNTL;
 
 use Evenement\EventEmitter;
 use React\EventLoop\LoopInterface;
+use React\EventLoop\Timer\TimerInterface;
 
 class PCNTL extends EventEmitter
 {
+    const DEFAULT_INTERVAL = 0.1;
+
+    /**
+     * @var TimerInterface|null
+     */
+    private $timer;
+    /**
+     * @var LoopInterface
+     */
+    private $loop;
+
     /**
      * Constructor. Registers a periodicTimer to call
      * the installed signal handlers
      *
-     * @param \React\EventLoop\LoopInterface $loop     Event Loop
-     * @param float                          $interval Interval in which new signals should be read
+     * @param LoopInterface $loop     Event Loop
+     * @param float         $interval Interval in which new signals should be read
      */
-    public function __construct(LoopInterface $loop, $interval = 0.1)
+    public function __construct(LoopInterface $loop, $interval = self::DEFAULT_INTERVAL)
     {
-        $loop->addPeriodicTimer($interval, $this);
+        $this->loop = $loop;
+        $this->start($interval);
+    }
+
+    /**
+     * Adds timer to Loop queue
+     *
+     * @param float $interval
+     * @return TimerInterface
+     */
+    public function start($interval = self::DEFAULT_INTERVAL)
+    {
+        if ($this->timer) {
+            $this->stop();
+        }
+
+        return $this->timer = $this->loop->addPeriodicTimer($interval, $this);
+    }
+
+    /**
+     * Cancels timer
+     */
+    public function stop()
+    {
+        if ($this->timer && $this->timer->isActive()) {
+            $this->timer->cancel();
+        }
+
+        $this->timer = null;
     }
 
     /**

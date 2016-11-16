@@ -2,6 +2,7 @@
 namespace MKraemer\ReactPCNTL;
 
 use React\EventLoop\LoopInterface;
+use React\EventLoop\Timer\TimerInterface;
 
 function pcntl_signal($signo, $callback) {
     PCNTLTest::$pcntl_signal_args[$signo] = $callback;
@@ -26,13 +27,25 @@ class PCNTLTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testConstruct_addsPeriodicTimer()
+    public function testLoopStartStop()
     {
-        $this->loop->expects($this->once())
+        $timer = $this->getMock('React\EventLoop\Timer\TimerInterface');
+        $this->loop->expects($this->exactly(2))
             ->method('addPeriodicTimer')
-            ->with(0.1, $this->isType('callable'));
+            ->with(0.1, $this->isType('callable'))
+            ->willReturn($timer)
+        ;
+        $timer->expects($this->once())
+            ->method('isActive')
+            ->willReturn(true)
+        ;
+        $timer->expects($this->once())
+            ->method('cancel')
+        ;
 
-        new PCNTL($this->loop);
+        $pcntl = new PCNTL($this->loop);
+        $timer = $pcntl->start();
+        $this->assertInstanceOf('\React\EventLoop\Timer\TimerInterface', $timer);
     }
 
     public function testRegisterSignalHandler()
