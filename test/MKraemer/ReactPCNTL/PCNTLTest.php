@@ -56,7 +56,7 @@ class PCNTLTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($listeners));
         $this->assertEquals(1, count(self::$pcntl_signal_args));
         $this->assertArrayHasKey(SIGTERM, self::$pcntl_signal_args);
-        $this->assertSame(array($pcntl, 'emit'), self::$pcntl_signal_args[SIGTERM]);
+        $this->assertInternalType('callable', self::$pcntl_signal_args[SIGTERM]);
     }
 
     public function testInvokeCallsDispatch()
@@ -104,7 +104,7 @@ class PCNTLTest extends \PHPUnit_Framework_TestCase
         $this->assertEmpty($pcntl->listeners(SIGTERM));
         $this->assertNotEmpty($pcntl->listeners(SIGHUP));
         $this->assertEquals(SIG_DFL, self::$pcntl_signal_args[SIGTERM]);
-        $this->assertSame(array($pcntl, 'emit'), self::$pcntl_signal_args[SIGHUP]);
+        $this->assertInternalType('callable', self::$pcntl_signal_args[SIGHUP]);
     }
 
     public function testRemoveAllListenersOfAllSignals()
@@ -120,5 +120,34 @@ class PCNTLTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(SIG_DFL, self::$pcntl_signal_args[SIGTERM]);
         $this->assertEmpty($pcntl->listeners(SIGHUP));
         $this->assertEquals(SIG_DFL, self::$pcntl_signal_args[SIGHUP]);
+    }
+
+    /**
+     * Evenement 3 breaks when the associative array which
+     * is passed to the listeners registered with pcntl_signal
+     * is passed on to EventEmitterTrait::emit.
+     *
+     * This test ensures these arguments are not passed.
+     */
+    public function testPcntlArgumentsAreNotPassed()
+    {
+        $pcntl = new PCNTL($this->loop);
+
+        $wasCalled = false;
+        $passedArguments = null;
+        $listener = function () use (&$passedArguments, &$wasCalled) {
+            $wasCalled = true;
+            $passedArguments = func_get_args();
+        };
+
+        $pcntl->on(SIGTERM, $listener);
+
+        // pcntl passes this array when calling the registered handlers:
+        $pcntlArguments = array('errno' => 0, 'signo' => 2, 'code' => 128);
+
+        call_user_func(self::$pcntl_signal_args[SIGTERM], $pcntlArguments);
+
+        $this->assertTrue($wasCalled);
+        $this->assertEmpty($passedArguments);
     }
 }
