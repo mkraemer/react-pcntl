@@ -11,7 +11,7 @@ function pcntl_signal_dispatch() {
     PCNTLTest::$pcntl_signal_dispatch = true;
 }
 
-class PCNTLTest extends \PHPUnit\Framework\TestCase
+class PCNTLTest extends \PHPUnit_Framework_TestCase
 {
     public static $pcntl_signal_args;
     public static $pcntl_signal_dispatch;
@@ -23,12 +23,12 @@ class PCNTLTest extends \PHPUnit\Framework\TestCase
     {
         self::$pcntl_signal_args = array();
         self::$pcntl_signal_dispatch = false;
-        $this->loop = $this->createMock('React\EventLoop\LoopInterface');
+        $this->loop = $this->getMock('React\EventLoop\LoopInterface');
     }
 
     public function testLoopStartStop()
     {
-        $timer = $this->createMock('React\EventLoop\Timer\TimerInterface');
+        $timer = $this->getMock('React\EventLoop\Timer\TimerInterface');
         $this->loop->expects($this->exactly(2))
             ->method('addPeriodicTimer')
             ->with(0.1, $this->isType('callable'))

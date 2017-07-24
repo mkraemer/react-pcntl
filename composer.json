@@ -13,13 +13,13 @@
         "psr-0": { "MKraemer": "src/" }
     },
     "require": {
-        "php": ">=5.4",
+        "php": ">=4.8",
         "ext-pcntl": "*",
         "evenement/evenement": "2.0.*",
         "react/event-loop": "0.4.*"
     },
     "require-dev": {
         "satooshi/php-coveralls": "^1.0",
-        "phpunit/phpunit": "^6.2"
+        "phpunit/phpunit": "^4.8"
     }
 }
