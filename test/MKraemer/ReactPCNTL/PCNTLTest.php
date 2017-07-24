@@ -26,7 +26,6 @@ class PCNTLTest extends \PHPUnit_Framework_TestCase
         $this->loop = $this->getMock('React\EventLoop\LoopInterface');
     }
 
-
     public function testLoopStartStop()
     {
         $timer = $this->getMock('React\EventLoop\Timer\TimerInterface');
@@ -146,7 +145,7 @@ class PCNTLTest extends \PHPUnit_Framework_TestCase
         // pcntl passes this array when calling the registered handlers:
         $pcntlArguments = array('errno' => 0, 'signo' => 2, 'code' => 128);
 
-        self::$pcntl_signal_args[SIGTERM]($pcntlArguments);
+        call_user_func(self::$pcntl_signal_args[SIGTERM], $pcntlArguments);
 
         $this->assertTrue($wasCalled);
         $this->assertEmpty($passedArguments);
