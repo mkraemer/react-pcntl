@@ -5,7 +5,7 @@
 
 Basic PCNTL bindings for [React PHP](https://github.com/reactphp).
 
-##Install
+## Install
 
 The best way to install this library is through [composer](http://getcomposer.org):
 
