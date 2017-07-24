@@ -12,7 +12,7 @@ The best way to install this library is through [composer](http://getcomposer.or
 ```JSON
 {
     "require": {
-        "mkraemer/react-pcntl": "2.1.*"
+        "mkraemer/react-pcntl": "^3.0.*"
     }
 }
 ```
