@@ -67,7 +67,13 @@ class PCNTL extends EventEmitter
      */
     public function on($signo, callable $listener)
     {
-        pcntl_signal($signo, array($this, 'emit'));
+        /*
+         * The associative array given when pcntl_signal calls the handler function
+         * can not be passed on to EventEmitterTrait::emit, as evenement 3
+         * does not support associative arrays. Drop it by using an intermediate
+         * callback function:
+         */
+        pcntl_signal($signo, function () use ($signo) {$this->emit($signo);});
         parent::on($signo, $listener);
     }
 
