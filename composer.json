@@ -16,7 +16,7 @@
         "php": ">=5.4",
         "ext-pcntl": "*",
         "evenement/evenement": "^3.0 || ^2.0",
-        "react/event-loop": "0.4.*"
+        "react/event-loop": "0.5.*"
     },
     "require-dev": {
         "satooshi/php-coveralls": "^1.0",
