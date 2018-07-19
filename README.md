@@ -1,3 +1,7 @@
+# Warning: this project has been deprecated
+
+Since v0.5 of ReactPHP [event-loop](https://github.com/reactphp/event-loop) offers native [support for signal handling](https://github.com/reactphp/event-loop/tree/v0.5.0#addsignal).
+
 # React-PCNTL
 
 [![Build Status](https://secure.travis-ci.org/mkraemer/react-pcntl.png)](http://travis-ci.org/mkraemer/react-pcntl)
